@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Моя школа — учебный сайт для 7–9 классов</title>
+<style>
+:root{
+  --main:#4f46e5; --accent:#f59e0b; --bg:#f8fafc; --text:#1e293b; --soft:#eef2ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Навигация */
+header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px #0001}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1100px;margin:auto;flex-wrap:wrap;gap:10px}
+.logo{font-weight:800;font-size:1.4rem;color:var(--main)}
+nav ul{display:flex;gap:18px;list-style:none;flex-wrap:wrap}
+nav a{font-weight:600;padding:6px 10px;border-radius:8px}
+nav a:hover,nav a.active{background:var(--soft);color:var(--main)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;padding:60px 0}
+.hero h1{font-size:2.5rem;line-height:1.2;margin-bottom:14px}
+.hero h1 span{color:var(--main)}
+.hero p{font-size:1.15rem;margin-bottom:24px;color:#475569}
+.hero img{width:100%;border-radius:20px;box-shadow:0 10px 30px #0003;height:340px;object-fit:cover}
+.btn{display:inline-block;padding:14px 26px;border-radius:12px;font-weight:700;margin:4px 8px 4px 0;transition:.2s;border:2px solid var(--main)}
+.btn.primary{background:var(--main);color:#fff}
+.btn.secondary{color:var(--main);background:#fff}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px #0002}
+
+section{padding:50px 0}
+h2{font-size:1.9rem;margin-bottom:10px}
+.lead{color:#64748b;margin-bottom:26px}
+
+/* Для кого */
+.audience{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.audience img{width:100%;height:300px;object-fit:cover;border-radius:20px}
+.audience ul{list-style:none}
+.audience li{padding:10px 14px 10px 40px;background:#fff;margin-bottom:10px;border-radius:12px;position:relative;box-shadow:0 2px 6px #0001}
+.audience li::before{content:"✔";position:absolute;left:14px;color:var(--main);font-weight:700}
+
+/* Карточки */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 14px #0001;transition:.2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:130px;object-fit:cover}
+.card div{padding:16px}
+.card h3{margin-bottom:6px;font-size:1.1rem}
+.card p{font-size:.95rem;color:#64748b}
+.card .more{display:block;margin-top:10px;color:var(--main);font-weight:700}
+
+/* Науки */
+.subjects{display:flex;flex-wrap:wrap;gap:10px}
+.subjects span{background:var(--soft);color:var(--main);padding:8px 16px;border-radius:30px;font-weight:600}
+
+/* Шаги */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;counter-reset:s}
+.step{background:#fff;padding:22px;border-radius:16px;border-top:5px solid var(--accent);counter-increment:s}
+.step::before{content:counter(s);display:block;font-size:2rem;font-weight:800;color:var(--accent)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--main),#7c3aed);color:#fff;text-align:center;border-radius:24px;padding:50px 20px}
+.cta p{margin:10px 0 22px}
+.cta .btn{border-color:#fff}
+.cta .btn.primary{background:var(--accent);border-color:var(--accent);color:#1e293b}
+
+footer{background:#1e293b;color:#cbd5e1;padding:36px 0;margin-top:50px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+footer h4{color:#fff;margin-bottom:8px}
+footer a{display:block;padding:2px 0}
+footer a:hover{color:#fff}
+
+/* Редактор */
+#editBar{position:fixed;right:16px;bottom:16px;z-index:20;display:flex;gap:8px}
+#editBar button{padding:12px 16px;border:none;border-radius:30px;font-weight:700;cursor:pointer;background:var(--text);color:#fff;box-shadow:0 4px 12px #0004}
+body.editing [data-edit]{outline:2px dashed var(--accent);outline-offset:3px;cursor:text}
+body.editing [data-edit]:focus{background:#fffbe6}
+
+@media(max-width:800px){
+  .hero,.audience{grid-template-columns:1fr}
+  .hero h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+  <a href="#" class="logo">🎓 Моя школа</a>
+  <ul>
+    <li><a href="index.html" class="active">Главная</a></li>
+    <li><a href="modules.html">Учебные модули</a></li>
+    <li><a href="methods.html">Методические материалы</a></li>
+    <li><a href="knowledge.html">База знаний</a></li>
+    <li><a href="tests.html">Тесты</a></li>
+  </ul>
+</nav>
+</header>
+
+<main class="container">
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1 data-edit="title">Учиться — <span>легко</span>, когда всё объяснено понятно</h1>
+    <p data-edit="subtitle">Уроки, шпаргалки и тесты для 7, 8 и 9 классов в одном месте. Разбирайтесь в сложных темах шаг за шагом и готовьтесь к контрольным и ОГЭ без стресса.</p>
+    <a href="modules.html" class="btn primary" data-edit="cta1">Начать обучение</a>
+    <a href="methods.html" class="btn secondary" data-edit="cta2">Скачать материалы</a>
+  </div>
+  <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900" alt="Школьники за учёбой">
+</div>
+
+<!-- КОМУ ПОЛЕЗЕН -->
+<section>
+<div class="audience">
+  <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=900" alt="Урок в классе">
+  <div>
+    <h2 data-edit="aud_title">Кому полезен этот ресурс</h2>
+    <p class="lead" data-edit="aud_lead">Сайт подойдёт, если вы:</p>
+    <ul>
+      <li data-edit="a1">учитесь в 7–9 классе и хотите лучше понимать предметы;</li>
+      <li data-edit="a2">пропустили тему и нужно быстро догнать класс;</li>
+      <li data-edit="a3">готовитесь к контрольной, ВПР или ОГЭ;</li>
+      <li data-edit="a4">хотите проверить себя и увидеть свои пробелы;</li>
+      <li data-edit="a5">родитель или учитель и ищете проверенные материалы.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- ЧТО НА САЙТЕ -->
+<section>
+  <h2 data-edit="sec_title">Что вы найдёте на сайте</h2>
+  <p class="lead" data-edit="sec_lead">Пять разделов — и всё нужное под рукой.</p>
+  <div class="cards">
+    <a class="card" href="modules.html">
+      <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600" alt="Книги">
+      <div><h3 data-edit="c1t">📚 Учебные модули</h3><p data-edit="c1p">Темы по классам и предметам: теория, примеры, практика.</p><span class="more">Перейти →</span></div>
+    </a>
+    <a class="card" href="methods.html">
+      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600" alt="Тетради">
+      <div><h3 data-edit="c2t">📝 Методические материалы</h3><p data-edit="c2p">Конспекты, схемы и рабочие листы для скачивания.</p><span class="more">Перейти →</span></div>
+    </a>
+    <a class="card" href="knowledge.html">
+      <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600" alt="Наука">
+      <div><h3 data-edit="c3t">💡 База знаний</h3><p data-edit="c3p">Термины, формулы, правила и ответы на частые вопросы.</p><span class="more">Перейти →</span></div>
+    </a>
+    <a class="card" href="tests.html">
+      <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600" alt="Тест">
+      <div><h3 data-edit="c4t">✅ Тесты</h3><p data-edit="c4p">Проверка знаний с мгновенным результатом и разбором ошибок.</p><span class="more">Перейти →</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- НАУКИ -->
+<section>
+  <h2 data-edit="sub_title">Науки, которые пригодятся в жизни</h2>
+  <p class="lead" data-edit="sub_lead">Выберите предмет и начните с любой темы.</p>
+  <div class="subjects">
+    <span>➗ Математика</span><span>🔬 Физика</span><span>🧪 Химия</span><span>🌿 Биология</span>
+    <span>🌍 География</span><span>💻 Информатика</span><span>📖 Русский язык</span><span>🏛 История</span>
+  </div>
+</section>
+
+<!-- КАК НАЧАТЬ -->
+<section>
+  <h2 data-edit="st_title">Как начать</h2>
+  <p class="lead" data-edit="st_lead">Три простых шага.</p>
+  <div class="steps">
+    <div class="step"><h3 data-edit="s1t">Выберите класс и предмет</h3><p data-edit="s1p">В разделе «Учебные модули» найдите нужную тему.</p></div>
+    <div class="step"><h3 data-edit="s2t">Изучите материал</h3><p data-edit="s2p">Короткая теория, примеры и подсказки в базе знаний.</p></div>
+    <div class="step"><h3 data-edit="s3t">Проверьте себя</h3><p data-edit="s3p">Пройдите тест и посмотрите, что ещё стоит повторить.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="cta">
+    <h2 data-edit="fin_title">Готовы сделать первый шаг?</h2>
+    <p data-edit="fin_text">Начните с одной темы — уже через 15 минут вы узнаете что-то новое.</p>
+    <a href="modules.html" class="btn primary">Начать обучение</a>
+    <a href="tests.html" class="btn secondary">Пройти тест</a>
+  </div>
+</section>
+</main>
+
+<footer>
+<div class="container fgrid">
+  <div><h4>🎓 Моя школа</h4><p data-edit="foot">Учебно-методический сайт для 7–9 классов.</p></div>
+  <div><h4>Разделы</h4><a href="modules.html">Учебные модули</a><a href="methods.html">Методические материалы</a><a href="knowledge.html">База знаний</a><a href="tests.html">Тесты</a></div>
+  <div><h4>Классы</h4><a href="modules.html#7">7 класс</a><a href="modules.html#8">8 класс</a><a href="modules.html#9">9 класс</a></div>
+  <div><h4>Помощь</h4><a href="#">Как пользоваться</a><a href="#">Обратная связь</a></div>
+</div>
+</footer>
+
+</body>
+</html>
